@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 505054843500021217}
+  deathDelay: 0.35
 --- !u!114 &8323703775565008857
 MonoBehaviour:
   m_ObjectHideFlags: 0

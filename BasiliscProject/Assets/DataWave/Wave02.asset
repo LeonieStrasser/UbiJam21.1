@@ -16,3 +16,4 @@ MonoBehaviour:
   speed: 10
   respawnMinTime: 1
   respawnRange: 1
+  waitForNextWave: 0

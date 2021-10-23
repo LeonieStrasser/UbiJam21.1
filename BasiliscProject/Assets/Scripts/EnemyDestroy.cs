@@ -9,7 +9,8 @@ public class EnemyDestroy : MonoBehaviour
 
     public IconSprite icon;
 
-    
+    [Min(0f)]
+    [SerializeField] private float deathDelay = 0.5f;
     
     
     void Start()
@@ -57,6 +58,8 @@ public class EnemyDestroy : MonoBehaviour
 
     public void OnDeath()
     {
-        Destroy(gameObject);
+        
+        
+        Destroy(gameObject, deathDelay);
     }
 }

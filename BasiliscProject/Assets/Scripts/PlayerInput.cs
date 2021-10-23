@@ -43,6 +43,9 @@ public class PlayerInput : MonoBehaviour
         if (enemies[(int)key].Count <= 0)
         {
             chains.LoseChain();
+            // hier Attack animation triggern
+            SetAttackAnimation();
+            // hier fail-Effekt triggern
             return;
         }
 
@@ -50,6 +53,9 @@ public class PlayerInput : MonoBehaviour
         foreach (EnemyDestroy unit in enemies[(int)key])
         {
             GameManager.Instance.killedEnemys++;
+            // hier Attack animation triggern
+            SetAttackAnimation();
+            // hier Attack Sound triggern
             unit.OnDeath();
             
         }
@@ -70,5 +76,9 @@ public class PlayerInput : MonoBehaviour
         enemies[(int)unit.MyKeyCode].Add(unit);
     }
 
+    public void SetAttackAnimation()
+    {
+        GameManager.Instance.playerAnimator.SetTrigger("attack");
+    }
     
 }

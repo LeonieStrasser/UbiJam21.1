@@ -39,8 +39,10 @@ public class GameManager : MonoBehaviour
     // Collision with Enemy
     public bool collisionAktive;
 
-    //Chain Bug Checker
-    public bool dubble;
+
+    // Animation
+    public Animator playerAnimator;
+
 
 
     // Enemy Wave
@@ -77,7 +79,7 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         collisionAktive = false;
 
-        dubble = false;
+       
     }
 
     // Update is called once per frame

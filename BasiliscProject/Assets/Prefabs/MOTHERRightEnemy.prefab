@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 388643506023234995}
   - component: {fileID: 8014039167938789545}
   - component: {fileID: 1706115097941416924}
+  - component: {fileID: 8323703775565008857}
   m_Layer: 0
   m_Name: MOTHERRightEnemy
   m_TagString: enemy
@@ -306,9 +307,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8892483689840514772}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 232b7b8f0a29ce14c885d968569bb246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 505054843500021217}
+--- !u!114 &8323703775565008857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8892483689840514772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3952003d14f7f3346b969d357229e14f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ed: {fileID: 0}
+  iconSpriteRenderer: {fileID: 1034451629798677215}

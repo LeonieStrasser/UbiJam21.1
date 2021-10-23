@@ -6,7 +6,8 @@ public class Gamemanager : MonoBehaviour
 {
     public GameObject rightEnemyPrefab;
     public GameObject leftEnemyPrefab;
-    public float respawntime = 1f;
+    public float respawnMinTime = 1f;
+    public float respawnMaxTime = 2f;
 
     private Vector2 screenBounds;
 
@@ -31,12 +32,27 @@ public class Gamemanager : MonoBehaviour
     // Collision with Enemy
     public bool collisionAktive;
 
+
+    // Enemy Wave
+    public int enemycount;
+    public int killedEnemys;
+    public float currentSpeed = 5;
+    //------Wave 1
+    public int nrOfEnemys1 = 20;
+    bool wave1Over = false;
+    public float speed1;
+    public float respawnMinTime1;
+    public float respawnRange1;
+
+
     void Start()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        StartCoroutine(EnemyWave());
+        StartCoroutine(EnemyWave1());
         gameOver = false;
         collisionAktive = false;
+        enemycount = 0;
+        killedEnemys = 0;
     }
 
     // Update is called once per frame
@@ -51,6 +67,8 @@ public class Gamemanager : MonoBehaviour
 
         GameObject a = Instantiate(leftEnemyPrefab) as GameObject;
         leftEnemyPrefab.transform.position = leftSpawnpoint;
+
+        enemycount++;
     }
 
     public void SpawnRightEnemy()
@@ -59,6 +77,8 @@ public class Gamemanager : MonoBehaviour
 
         GameObject right = Instantiate(rightEnemyPrefab) as GameObject;
         right.transform.position = rightSpawnpoint;
+
+        enemycount++;
     }
 
     public void GameIsOver()
@@ -81,14 +101,29 @@ public class Gamemanager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    IEnumerator EnemyWave()
+    IEnumerator EnemyWave1()
     {
-        while(true)
+        while(enemycount <= nrOfEnemys1)
         {
-            yield return new WaitForSeconds(respawntime);
+            currentSpeed = speed1;
+
+            respawnMinTime = respawnMinTime1;
+            respawnMaxTime = respawnMinTime1 + respawnRange1;
+
+
+            yield return new WaitForSeconds(Random.Range(respawnMinTime, respawnMaxTime));
             SpawnRightEnemy();
+            yield return new WaitForSeconds(Random.Range(respawnMinTime, respawnMaxTime));
             SpawnLeftEnemy();
+                        
         }
+        
+        if (killedEnemys == enemycount)
+        {
+            wave1Over = true;
+        }
+
+        
         
     }
 

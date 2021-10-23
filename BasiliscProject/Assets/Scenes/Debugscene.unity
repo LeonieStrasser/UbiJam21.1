@@ -615,9 +615,10 @@ GameObject:
   - component: {fileID: 626625400}
   - component: {fileID: 626625399}
   - component: {fileID: 626625401}
+  - component: {fileID: 626625402}
   m_Layer: 0
   m_Name: PlayerCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -636,7 +637,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.14, y: 2.39}
+  m_Size: {x: 0.98, y: 2.39}
   m_Direction: 0
 --- !u!4 &626625400
 Transform:
@@ -670,6 +671,22 @@ MonoBehaviour:
   hp3: {fileID: 372213811}
   damageDelayTime: 2
   gm: {fileID: 0}
+--- !u!58 &626625402
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626625398}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 6.2
 --- !u!1 &629995832
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,13 +944,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightEnemyPrefab: {fileID: 8892483689840514772, guid: b954735e7c008d948b19f918beaf267d, type: 3}
   leftEnemyPrefab: {fileID: 2893858089733958489, guid: a59d1215948e51844881abb563eec575, type: 3}
-  respawntime: 5
+  respawnMinTime: 1
+  respawnMaxTime: 2
   leftSpawnpoint: {x: 0, y: 0}
   rightSpawnpoint: {x: 0, y: 0}
   enemyHight: 2
   gameOver: 0
   gameOverDelayTime: 0.5
   gameOverscreen: {fileID: 244148394}
+  collisionAktive: 0
+  enemycount: 0
+  killedEnemys: 0
+  currentSpeed: 5
+  nrOfEnemys1: 20
+  speed1: 5
+  respawnMinTime1: 2
+  respawnRange1: 4
 --- !u!4 &1594615323
 Transform:
   m_ObjectHideFlags: 0

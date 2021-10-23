@@ -14,6 +14,7 @@ public class EnemyDestroy : MonoBehaviour
     public IconSprite icon;
 
     public Gamemanager gm;
+    public Chains ch;
     
     
     // Start is called before the first frame update
@@ -27,6 +28,7 @@ public class EnemyDestroy : MonoBehaviour
         SetKeyCode();
 
         gm = FindObjectOfType<Gamemanager>();
+        ch = FindObjectOfType<Chains>();
 
         
 
@@ -47,6 +49,14 @@ public class EnemyDestroy : MonoBehaviour
                 gm.WaveController();
             }
             Destroy(gameObject);
+        }else if(Input.GetKeyDown(up) | Input.GetKeyDown(down) | Input.GetKeyDown(left) | Input.GetKeyDown(right))
+        {
+            // chain abziehen
+            //checkenob ein anderer auch 
+            
+            ch.LoseChain();
+            
+            
         }
     }
 

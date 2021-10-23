@@ -29,9 +29,13 @@ public class Gamemanager : MonoBehaviour
     // UI
     public GameObject gameOverscreen;
     public GameObject WinScreen;
+    public GameObject ChainUI;
 
     // Collision with Enemy
     public bool collisionAktive;
+
+    //Chain Bug Checker
+    public bool dubble;
 
 
     // Enemy Wave
@@ -54,6 +58,8 @@ public class Gamemanager : MonoBehaviour
         collisionAktive = false;
         enemycount = 0;
         killedEnemys = 0;
+
+        dubble = false;
     }
 
     // Update is called once per frame
@@ -132,6 +138,12 @@ public class Gamemanager : MonoBehaviour
         gameOver = true;       
         StartCoroutine(GameOverDelay());
         
+    }
+
+    public void LostAllChains()
+    {
+        ChainUI.SetActive(true);
+        PauseGame();
     }
 
     public void GameOverScreenOn()

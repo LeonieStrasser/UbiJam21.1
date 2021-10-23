@@ -54,6 +54,7 @@ public class PlayerInput : MonoBehaviour
         {
             GameManager.Instance.killedEnemys++;
             // hier Attack animation triggern
+            CheckCharacterDirection(unit.transform.position.x);
             SetAttackAnimation();
             // hier Attack Sound triggern
             unit.OnDeath();
@@ -81,4 +82,14 @@ public class PlayerInput : MonoBehaviour
         GameManager.Instance.playerAnimator.SetTrigger("attack");
     }
     
+    private void CheckCharacterDirection(float xPositionEnemy)
+    {
+        if(xPositionEnemy > transform.position.x)
+        {
+            gameObject.transform.localScale = new Vector3(-1, 1, 1);
+        }else
+        {
+            gameObject.transform.localScale = new Vector3(1, 1, 1);
+        }
+    }
 }

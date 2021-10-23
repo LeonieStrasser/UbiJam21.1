@@ -28,6 +28,7 @@ public class Gamemanager : MonoBehaviour
 
     // UI
     public GameObject gameOverscreen;
+    public GameObject WinScreen;
 
     // Collision with Enemy
     public bool collisionAktive;
@@ -48,7 +49,7 @@ public class Gamemanager : MonoBehaviour
     void Start()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        Wave1();
+        WaveController();
         gameOver = false;
         collisionAktive = false;
         enemycount = 0;
@@ -62,7 +63,18 @@ public class Gamemanager : MonoBehaviour
     }
 
    
-    
+    public void WaveController()
+    {
+        if(wave1Over == false)
+        {
+            // 1. Welle starten
+            Wave1();
+        }else if (wave1Over == true)
+        {
+            // WIn UI anzeigen
+            WinScreen.SetActive(true);
+        }
+    }
     void Wave1 ()
     {
         

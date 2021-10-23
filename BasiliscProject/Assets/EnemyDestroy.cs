@@ -44,6 +44,7 @@ public class EnemyDestroy : MonoBehaviour
             if (gm.killedEnemys - 2 == gm.nrOfEnemys1)
             {
                 gm.wave1Over = true;
+                gm.WaveController();
             }
             Destroy(gameObject);
         }

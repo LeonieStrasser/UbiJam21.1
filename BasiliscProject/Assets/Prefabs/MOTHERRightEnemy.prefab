@@ -110,8 +110,8 @@ Transform:
   m_LocalPosition: {x: 0.01, y: 0.0548, z: 0}
   m_LocalScale: {x: 0.5284, y: 0.49780214, z: 1}
   m_Children: []
-  m_Father: {fileID: 5902995723035637749}
-  m_RootOrder: 1
+  m_Father: {fileID: 9170909504546831223}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1034451629798677215
 SpriteRenderer:
@@ -164,6 +164,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6128688513610072949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9170909504546831223}
+  - component: {fileID: 505054843500021217}
+  m_Layer: 0
+  m_Name: KeyCodeIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9170909504546831223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128688513610072949}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6872902430317501540}
+  m_Father: {fileID: 5902995723035637749}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &505054843500021217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128688513610072949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d50a67b9115b294cbce434567e26146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySprite: {fileID: 1034451629798677215}
+  upSprite: {fileID: 21300000, guid: a1be4ca45872b9b42afe5323e53817d3, type: 3}
+  downSprite: {fileID: 21300000, guid: 141d2e8314535134b927162fd4c0aa20, type: 3}
+  leftSprite: {fileID: 21300000, guid: 4a1acd06844041a44b04c5d7d1bd998f, type: 3}
+  rightSprite: {fileID: 21300000, guid: 7d00e0a46bf056444b81dadf06b4eedb, type: 3}
 --- !u!1 &8892483689840514772
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +245,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7521440663847945652}
-  - {fileID: 6872902430317501540}
+  - {fileID: 9170909504546831223}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -262,3 +311,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232b7b8f0a29ce14c885d968569bb246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 505054843500021217}

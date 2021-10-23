@@ -28,13 +28,15 @@ public class Gamemanager : MonoBehaviour
     // UI
     public GameObject gameOverscreen;
 
-
+    // Collision with Enemy
+    public bool collisionAktive;
 
     void Start()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         StartCoroutine(EnemyWave());
         gameOver = false;
+        collisionAktive = false;
     }
 
     // Update is called once per frame

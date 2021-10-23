@@ -14,12 +14,15 @@ public class Health : MonoBehaviour
     public float damageDelayTime = 1;
 
     public Gamemanager gm;
+
+    
     
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
         gm = FindObjectOfType<Gamemanager>();
+        gm.collisionAktive = false;
     }
 
 
@@ -27,13 +30,22 @@ public class Health : MonoBehaviour
     {
         if (collision.collider.tag == "enemy")
         {
+            gm.collisionAktive = true;
             Damage();
         }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        
         StartCoroutine(DamageDelay());
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "enemy")
+        {
+            gm.collisionAktive = false;
+        }
     }
 
 
@@ -73,7 +85,16 @@ public class Health : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(damageDelayTime);
-            Damage();
+            
+            if(gm.collisionAktive == true)
+            {
+                Damage();
+            }
+            else { 
+                Debug.Log("No Enemy after Delay");
+                break;
+            }
+            
         }
 
     }

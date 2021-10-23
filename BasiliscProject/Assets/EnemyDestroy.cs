@@ -10,8 +10,8 @@ public class EnemyDestroy : MonoBehaviour
     KeyCode right;
 
     KeyCode myKeyCode;
-    
-    
+
+    public IconSprite icon;
     
     
     // Start is called before the first frame update
@@ -43,18 +43,22 @@ public class EnemyDestroy : MonoBehaviour
         {
             case 1:
                 myKeyCode = up;
+                icon.SetUpSprite();
                 break;
 
             case 2:
                 myKeyCode = down;
+                icon.SetDownSprite();
                 break;
 
             case 3:
                 myKeyCode = left;
+                icon.SetLeftSprite();
                 break;
 
             case 4:
                 myKeyCode = right;
+                icon.SetRightSprite();
                 break;
 
             default:

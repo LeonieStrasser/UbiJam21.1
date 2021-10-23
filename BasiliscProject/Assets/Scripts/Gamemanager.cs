@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gamemanager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
+    private static GameManager instance = null;
+    public static GameManager Instance { get => instance; }
+
+    public PlayerInput playerInput = null;
+
     public GameObject rightEnemyPrefab;
     public GameObject leftEnemyPrefab;
     public float respawnMinTime = 1f;
@@ -39,25 +44,38 @@ public class Gamemanager : MonoBehaviour
 
 
     // Enemy Wave
-    public int enemycount;
-    public int killedEnemys;
-    public float currentSpeed = 5;
-    //------Wave 1
-    public int nrOfEnemys1 = 20;
-    public bool wave1Over = false;
-    public float speed1;
-    public float respawnMinTime1;
-    public float respawnRange1;
+    private int enemycount;
 
+    [HideInInspector]
+    public int killedEnemys;
+
+    [HideInInspector]
+    public float currentSpeed = 5;
+
+    public WaveData[] waves;
+
+    private int waveIndex = -1;
+
+
+    private bool waveOver = true;
+    public bool WaveOver { get => this.waveOver; set => this.waveOver = value; }
+
+    [HideInInspector]
+    public int maxEntitiesCount = 0;
+
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        WaveController();
+        StartWave();
         gameOver = false;
         collisionAktive = false;
-        enemycount = 0;
-        killedEnemys = 0;
 
         dubble = false;
     }
@@ -65,79 +83,88 @@ public class Gamemanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-   
-    public void WaveController()
+
+    public void StartWave()
     {
-        if(wave1Over == false)
+        if (!waveOver)
         {
-            // 1. Welle starten
-            Wave1();
-        }else if (wave1Over == true)
+            return;
+        }
+
+        waveIndex++;
+
+        if (waveIndex >= waves.Length)
         {
             // WIn UI anzeigen
             WinScreen.SetActive(true);
         }
-    }
-    void Wave1 ()
-    {
-        
-        if(wave1Over == false)
+        else
         {
-            StartCoroutine(EnemyWave1());
-
+            Debug.Log("Wave: " + waveIndex);
+            StartCoroutine(SpawnWave());
         }
-        
     }
 
-    IEnumerator EnemyWave1()
+
+    IEnumerator SpawnWave()
     {
-        while (enemycount <= nrOfEnemys1)
+        waveOver = false;
+        enemycount = 0;
+        killedEnemys = 0;
+
+
+        maxEntitiesCount = waves[waveIndex].nrOfEnemys;
+        currentSpeed = waves[waveIndex].speed;
+
+        respawnMinTime = waves[waveIndex].respawnMinTime;
+        respawnMaxTime = waves[waveIndex].respawnMinTime + waves[waveIndex].respawnRange;
+
+        while (enemycount < waves[waveIndex].nrOfEnemys)
         {
-            currentSpeed = speed1;
-
-            respawnMinTime = respawnMinTime1;
-            respawnMaxTime = respawnMinTime1 + respawnRange1;
-
-
             yield return new WaitForSeconds(Random.Range(respawnMinTime, respawnMaxTime));
-            SpawnRightEnemy();
-            yield return new WaitForSeconds(Random.Range(respawnMinTime, respawnMaxTime));
-            SpawnLeftEnemy();
+            if (Random.Range(0, 2) == 0)
+            {
+                SpawnRightEnemy();
+            }
+            else
+            {
+                SpawnLeftEnemy();
+            }
 
 
         }
-
-
+        yield return new WaitForSeconds(waves[waveIndex].waitForNextWave);
+          
     }
 
     public void SpawnLeftEnemy()
     {
-        leftSpawnpoint = new Vector2(screenBounds.x * -2, -screenBounds.y/enemyHight);
+        leftSpawnpoint = new Vector2(screenBounds.x * -2, -screenBounds.y / enemyHight);
 
-        GameObject a = Instantiate(leftEnemyPrefab) as GameObject;
-        leftEnemyPrefab.transform.position = leftSpawnpoint;
+        GameObject left = Instantiate(leftEnemyPrefab, leftSpawnpoint, Quaternion.identity);
+        left.GetComponent<EnemyMovement>().Init(currentSpeed);
 
         enemycount++;
     }
 
     public void SpawnRightEnemy()
     {
-        rightSpawnpoint = new Vector2(-screenBounds.x * -2, -screenBounds.y/enemyHight);
+        rightSpawnpoint = new Vector2(-screenBounds.x * -2, -screenBounds.y / enemyHight);
 
-        GameObject right = Instantiate(rightEnemyPrefab) as GameObject;
-        right.transform.position = rightSpawnpoint;
+        GameObject right = Instantiate(rightEnemyPrefab, rightSpawnpoint, Quaternion.identity);
+        right.GetComponent<EnemyMovement>().Init(-currentSpeed);
 
         enemycount++;
     }
 
     public void GameIsOver()
     {
-        gameOver = true;       
+        gameOver = true;
         StartCoroutine(GameOverDelay());
-        
+
     }
 
     public void LostAllChains()
@@ -159,7 +186,7 @@ public class Gamemanager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    
+
 
     IEnumerator GameOverDelay()
     {
@@ -171,5 +198,8 @@ public class Gamemanager : MonoBehaviour
 
     }
 
-
+    public void OnUnitSpawn(EnemyDestroy unit)
+    {
+        playerInput.AddUnit(unit);
+    }
 }

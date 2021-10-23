@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
 
     public float damageDelayTime = 1;
 
-    public Gamemanager gm;
+    
 
     
     
@@ -21,8 +21,8 @@ public class Health : MonoBehaviour
     void Start()
     {
         health = maxHealth;
-        gm = FindObjectOfType<Gamemanager>();
-        gm.collisionAktive = false;
+       
+        GameManager.Instance.collisionAktive = false;
     }
 
 
@@ -30,7 +30,7 @@ public class Health : MonoBehaviour
     {
         if (collision.collider.tag == "enemy")
         {
-            gm.collisionAktive = true;
+            GameManager.Instance.collisionAktive = true;
             Damage();
         }
     }
@@ -44,7 +44,7 @@ public class Health : MonoBehaviour
     {
         if (collision.collider.tag == "enemy")
         {
-            gm.collisionAktive = false;
+            GameManager.Instance.collisionAktive = false;
         }
     }
 
@@ -74,7 +74,7 @@ public class Health : MonoBehaviour
                 hp2.SetActive(false);
                 hp3.SetActive(false);
 
-                gm.GameIsOver();
+                GameManager.Instance.GameIsOver();
                 break;
         }
             
@@ -86,7 +86,7 @@ public class Health : MonoBehaviour
         {
             yield return new WaitForSeconds(damageDelayTime);
             
-            if(gm.collisionAktive == true)
+            if(GameManager.Instance.collisionAktive == true)
             {
                 Damage();
             }

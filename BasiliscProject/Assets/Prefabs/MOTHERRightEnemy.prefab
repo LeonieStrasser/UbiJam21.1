@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 1654658229226533464}
   - component: {fileID: 388643506023234995}
   - component: {fileID: 8014039167938789545}
+  - component: {fileID: 1706115097941416924}
   m_Layer: 0
   m_Name: MOTHERRightEnemy
   m_TagString: enemy
@@ -249,3 +250,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!114 &1706115097941416924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8892483689840514772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 232b7b8f0a29ce14c885d968569bb246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

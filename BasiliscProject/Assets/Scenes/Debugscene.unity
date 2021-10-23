@@ -264,7 +264,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 262
+    m_FontSize: 149
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -956,7 +956,8 @@ MonoBehaviour:
   enemycount: 0
   killedEnemys: 0
   currentSpeed: 5
-  nrOfEnemys1: 20
+  nrOfEnemys1: 8
+  wave1Over: 0
   speed1: 5
   respawnMinTime1: 2
   respawnRange1: 4

@@ -12,6 +12,8 @@ public class EnemyDestroy : MonoBehaviour
     KeyCode myKeyCode;
 
     public IconSprite icon;
+
+    public Gamemanager gm;
     
     
     // Start is called before the first frame update
@@ -24,6 +26,10 @@ public class EnemyDestroy : MonoBehaviour
 
         SetKeyCode();
 
+        gm = FindObjectOfType<Gamemanager>();
+
+        
+
     }
 
     // Update is called once per frame
@@ -31,6 +37,14 @@ public class EnemyDestroy : MonoBehaviour
     {
         if(Input.GetKeyDown(myKeyCode))
         {
+            gm.killedEnemys++;
+
+
+
+            if (gm.killedEnemys - 2 == gm.nrOfEnemys1)
+            {
+                gm.wave1Over = true;
+            }
             Destroy(gameObject);
         }
     }

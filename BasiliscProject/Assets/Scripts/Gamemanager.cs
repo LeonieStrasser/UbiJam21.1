@@ -39,7 +39,7 @@ public class Gamemanager : MonoBehaviour
     public float currentSpeed = 5;
     //------Wave 1
     public int nrOfEnemys1 = 20;
-    bool wave1Over = false;
+    public bool wave1Over = false;
     public float speed1;
     public float respawnMinTime1;
     public float respawnRange1;
@@ -48,7 +48,7 @@ public class Gamemanager : MonoBehaviour
     void Start()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        StartCoroutine(EnemyWave1());
+        Wave1();
         gameOver = false;
         collisionAktive = false;
         enemycount = 0;
@@ -59,6 +59,40 @@ public class Gamemanager : MonoBehaviour
     void Update()
     {
         
+    }
+
+   
+    
+    void Wave1 ()
+    {
+        
+        if(wave1Over == false)
+        {
+            StartCoroutine(EnemyWave1());
+
+        }
+        
+    }
+
+    IEnumerator EnemyWave1()
+    {
+        while (enemycount <= nrOfEnemys1)
+        {
+            currentSpeed = speed1;
+
+            respawnMinTime = respawnMinTime1;
+            respawnMaxTime = respawnMinTime1 + respawnRange1;
+
+
+            yield return new WaitForSeconds(Random.Range(respawnMinTime, respawnMaxTime));
+            SpawnRightEnemy();
+            yield return new WaitForSeconds(Random.Range(respawnMinTime, respawnMaxTime));
+            SpawnLeftEnemy();
+
+
+        }
+
+
     }
 
     public void SpawnLeftEnemy()
@@ -101,31 +135,7 @@ public class Gamemanager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    IEnumerator EnemyWave1()
-    {
-        while(enemycount <= nrOfEnemys1)
-        {
-            currentSpeed = speed1;
-
-            respawnMinTime = respawnMinTime1;
-            respawnMaxTime = respawnMinTime1 + respawnRange1;
-
-
-            yield return new WaitForSeconds(Random.Range(respawnMinTime, respawnMaxTime));
-            SpawnRightEnemy();
-            yield return new WaitForSeconds(Random.Range(respawnMinTime, respawnMaxTime));
-            SpawnLeftEnemy();
-                        
-        }
-        
-        if (killedEnemys == enemycount)
-        {
-            wave1Over = true;
-        }
-
-        
-        
-    }
+    
 
     IEnumerator GameOverDelay()
     {

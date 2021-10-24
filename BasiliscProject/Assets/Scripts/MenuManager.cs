@@ -15,4 +15,9 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
     }
 
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
+
 }

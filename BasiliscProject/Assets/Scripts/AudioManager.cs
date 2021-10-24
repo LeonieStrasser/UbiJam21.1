@@ -68,6 +68,7 @@ public class AudioManager : MonoBehaviour
             gameObject.transform.SetParent(this.transform);
             sounds[i].SetSource(gameObject.AddComponent<AudioSource>());
         }
+        PlaySound(GameManager.Instance.Soundname_Music);
         
     }
 
@@ -86,4 +87,6 @@ public class AudioManager : MonoBehaviour
         Debug.Log("AudioManager: SOund not found in List. Soundname: " + name);
     }
 
+
+    
 }

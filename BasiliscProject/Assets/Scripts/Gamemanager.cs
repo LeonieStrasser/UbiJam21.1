@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
         audioManager = AudioManager.instance;
         if( audioManager == null)
         {
@@ -121,6 +122,7 @@ public class GameManager : MonoBehaviour
         {
             // WIn UI anzeigen
             WinScreen.SetActive(true);
+            Cursor.visible = true;
         }
         else
         {
@@ -198,6 +200,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOverScreenOn()
     {
+        Cursor.visible = true;
         gameOverscreen.SetActive(true);
         PauseGame();
     }

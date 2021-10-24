@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c458b778be45245a2035866611b813, type: 3}
   m_Name: Wave02
   m_EditorClassIdentifier: 
-  nrOfEnemys: 5
-  speed: 10
+  nrOfEnemys: 10
+  speed: 5
   respawnMinTime: 1
-  respawnRange: 1
-  waitForNextWave: 0
+  respawnRange: 2
+  waitForNextWave: 3

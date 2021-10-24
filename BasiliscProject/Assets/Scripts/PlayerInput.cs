@@ -59,6 +59,8 @@ public class PlayerInput : MonoBehaviour
             // hier Attack Sound triggern
             AudioManager.instance.PlaySound(GameManager.Instance.Soundname_punch);
             AudioManager.instance.PlaySound(GameManager.Instance.Soundname_enemyHit);
+            
+
             unit.OnDeath();
             
         }
@@ -94,4 +96,10 @@ public class PlayerInput : MonoBehaviour
             gameObject.transform.localScale = new Vector3(1, 1, 1);
         }
     }
+
+
+
+
+
+    
 }

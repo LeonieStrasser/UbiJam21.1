@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38c458b778be45245a2035866611b813, type: 3}
-  m_Name: Wave01
+  m_Name: Wave05
   m_EditorClassIdentifier: 
-  nrOfEnemys: 5
-  speed: 3
-  respawnMinTime: 2
-  respawnRange: 1.5
-  waitForNextWave: 2
+  nrOfEnemys: 20
+  speed: 6.5
+  respawnMinTime: 0.4
+  respawnRange: 1.7
+  waitForNextWave: 3

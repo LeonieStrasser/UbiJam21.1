@@ -776,7 +776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1788,6 +1788,9 @@ MonoBehaviour:
   waves:
   - {fileID: 11400000, guid: 1cdccba4eed8deb44ac5066676cb3d2a, type: 2}
   - {fileID: 11400000, guid: 7920a923e2dd5b543a33d84be7acafdb, type: 2}
+  - {fileID: 11400000, guid: 5c17ad91905b7524183ad23b9ac3f25f, type: 2}
+  - {fileID: 11400000, guid: 922372a282abd5a47bccccfecbd6dc52, type: 2}
+  - {fileID: 11400000, guid: 56707b2505ab1bb4098ecfbcc69807b8, type: 2}
   maxEntitiesCount: 0
 --- !u!4 &1594615323
 Transform:

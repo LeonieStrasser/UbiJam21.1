@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
     public string Soundname_loose;
     public string Soundname_StartGame;
 
+    
+
 
 
     // Enemy Wave

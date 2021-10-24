@@ -194,7 +194,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4dcf1629bbd97d04684593b9095e5379, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 118564968c5b2ce4bbef8ee090267994, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -494,7 +494,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4dcf1629bbd97d04684593b9095e5379, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 118564968c5b2ce4bbef8ee090267994, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -785,7 +785,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.22}
-  m_Size: {x: 0.98, y: 2.39}
+  m_Size: {x: 0.35, y: 2.39}
   m_Direction: 0
 --- !u!4 &626625400
 Transform:
@@ -1007,7 +1007,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4dcf1629bbd97d04684593b9095e5379, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 118564968c5b2ce4bbef8ee090267994, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1471,6 +1471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1594615323}
   - component: {fileID: 1594615322}
+  - component: {fileID: 1594615324}
   m_Layer: 0
   m_Name: Gamemanager
   m_TagString: Untagged
@@ -1497,7 +1498,7 @@ MonoBehaviour:
   respawnMaxTime: 2
   leftSpawnpoint: {x: 0, y: 0}
   rightSpawnpoint: {x: 0, y: 0}
-  enemyHight: 2
+  enemyHight: 7
   gameOver: 0
   gameOverDelayTime: 0.5
   gameOverscreen: {fileID: 244148394}
@@ -1505,6 +1506,14 @@ MonoBehaviour:
   ChainUI: {fileID: 0}
   collisionAktive: 0
   playerAnimator: {fileID: 626625406}
+  Soundname_Music: music
+  Soundname_MusicIntro: 
+  Soundname_enemyHit: enemyHit
+  Soundname_Hit: hit
+  Soundname_punch: punch
+  Soundname_damage: damage
+  Soundname_loose: loose
+  Soundname_StartGame: startWave
   killedEnemys: 0
   currentSpeed: 5
   waves:
@@ -1525,6 +1534,68 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1594615324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594615321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edabf4ab343f2a548ac84300e4b1876c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: punch
+    clip: {fileID: 8300000, guid: 904ac7ae90d77044e8a650f85e901f66, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0.382
+    randomPitch: 0.454
+    loop: 0
+  - name: enemyHit
+    clip: {fileID: 8300000, guid: 3c8ce9759a8cd464ead4a0be0a99bca7, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0.382
+    randomPitch: 0.459
+    loop: 0
+  - name: damage
+    clip: {fileID: 8300000, guid: a86a1d6fe8769cf4da894d917d051650, type: 3}
+    volume: 0.358
+    pitch: 1
+    randomVolume: 0.402
+    randomPitch: 0.422
+    loop: 0
+  - name: startWave
+    clip: {fileID: 8300000, guid: b6791bf3214d8ba408a058246816dab0, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0.402
+    randomPitch: 0.422
+    loop: 0
+  - name: loose
+    clip: {fileID: 8300000, guid: 010abf39478ce864f96d0d221621b64c, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0.402
+    randomPitch: 0.422
+    loop: 0
+  - name: hit
+    clip: {fileID: 8300000, guid: 84cde49f8e7ac8242a33838cb1d3b226, type: 3}
+    volume: 0.682
+    pitch: 1
+    randomVolume: 0.402
+    randomPitch: 0.422
+    loop: 0
+  - name: music
+    clip: {fileID: 8300000, guid: adc3ff222d06ad94ab8cdbf85bbcc9cf, type: 3}
+    volume: 0.386
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 1
 --- !u!1 &1727310317
 GameObject:
   m_ObjectHideFlags: 0

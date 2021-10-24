@@ -53,9 +53,11 @@ public class Health : MonoBehaviour
     public void Damage()
     {
         health--;
+        AudioManager.instance.PlaySound(GameManager.Instance.Soundname_damage);
+        AudioManager.instance.PlaySound(GameManager.Instance.Soundname_Hit);
 
         // Health Sprites aktualisieren
-        switch(health)
+        switch (health)
         {
             case 2:
                 hp1.SetActive(true);

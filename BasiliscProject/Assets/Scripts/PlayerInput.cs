@@ -57,6 +57,8 @@ public class PlayerInput : MonoBehaviour
             CheckCharacterDirection(unit.transform.position.x);
             SetAttackAnimation();
             // hier Attack Sound triggern
+            AudioManager.instance.PlaySound(GameManager.Instance.Soundname_punch);
+            AudioManager.instance.PlaySound(GameManager.Instance.Soundname_enemyHit);
             unit.OnDeath();
             
         }

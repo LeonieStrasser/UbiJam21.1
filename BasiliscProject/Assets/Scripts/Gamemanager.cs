@@ -43,6 +43,17 @@ public class GameManager : MonoBehaviour
     // Animation
     public Animator playerAnimator;
 
+    //Audio
+    private AudioManager audioManager;
+    public string Soundname_Music;
+    public string Soundname_MusicIntro;
+    public string Soundname_enemyHit;
+    public string Soundname_Hit;
+    public string Soundname_punch;
+    public string Soundname_damage;
+    public string Soundname_loose;
+    public string Soundname_StartGame;
+
 
 
     // Enemy Wave
@@ -74,7 +85,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        audioManager = AudioManager.instance;
+        if( audioManager == null)
+        {
+            Debug.LogError("No AudioManager in the scene!");
+        }
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        AudioManager.instance.PlaySound(Soundname_Music);
         StartWave();
         gameOver = false;
         collisionAktive = false;
@@ -106,6 +123,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("Wave: " + waveIndex);
+            AudioManager.instance.PlaySound(Soundname_StartGame);
             StartCoroutine(SpawnWave());
         }
     }
@@ -165,6 +183,7 @@ public class GameManager : MonoBehaviour
     public void GameIsOver()
     {
         gameOver = true;
+        AudioManager.instance.PlaySound(GameManager.instance.Soundname_loose);
         StartCoroutine(GameOverDelay());
 
     }

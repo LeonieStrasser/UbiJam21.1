@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("No AudioManager in the scene!");
         }
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        AudioManager.instance.PlaySound(Soundname_Music);
+        //AudioManager.instance.PlaySound(Soundname_Music);
         StartWave();
         gameOver = false;
         collisionAktive = false;
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("Wave: " + waveIndex);
-            AudioManager.instance.PlaySound(Soundname_StartGame);
+           // AudioManager.instance.PlaySound(Soundname_StartGame);
             StartCoroutine(SpawnWave());
         }
     }
